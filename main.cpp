@@ -1,10 +1,22 @@
 #include <iostream>
 using namespace std;
- 
+
+bool validMark(float mark) {
+    return mark >= 0 && mark <= 100;
+}
+
 int main() {
     float m1, m2, m3;
-    cout << "Enter marks of 3 subjects: ";
-    cin >> m1 >> m2 >> m3; 
+
+    do {
+        cout << "Enter marks of 3 subjects (0-100 each): ";
+        cin >> m1 >> m2 >> m3;
+
+        if (!validMark(m1) || !validMark(m2) || !validMark(m3)) {
+            cout << "Invalid marks! Please enter values between 0 and 100." << endl;
+        }
+    } while (!validMark(m1) || !validMark(m2) || !validMark(m3));
+
     float total = m1 + m2 + m3;
     float percentage = total / 300 * 100;
     cout << "Total: " << total << endl;
